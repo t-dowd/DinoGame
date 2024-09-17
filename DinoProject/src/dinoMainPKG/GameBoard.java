@@ -4,6 +4,8 @@
 package dinoMainPKG;
 
 import java.util.*;
+
+import assets.StdTile;
 /**
  * 
  */

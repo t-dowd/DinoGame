@@ -1,7 +1,7 @@
 /**
  * 
  */
-package dinoMainPKG;
+package assets;
 
 import java.util.Arrays;
 
