@@ -24,14 +24,20 @@ public class Main {
 		 * 2. Power wash
 		 *	
 		 */
-		GameBoard testBoard = new GameBoard();
+		GameBoard newBoard = new GameBoard();
+		ArrayList<ArrayList<StdTile>> MainBoard= new ArrayList<ArrayList<StdTile>>();
+		
+		MainBoard = newBoard.converter();
+		
+		newBoard.terminalRender(MainBoard);
 		
 		
-		testBoard.terminalRender();
+		
 		
 		
 		
 		
 	}
-
+	
+	
 }

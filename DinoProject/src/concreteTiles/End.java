@@ -12,7 +12,7 @@ public class End extends ParentAbsTile implements StdTile,Immovable {
 	public End() {
 		super();
 		this.setLocation(-1, -1);
-		this.setSymbol(' ');
+		this.setSymbol('e');
 	}
 	public End(int i, int k, Character pChar) {
 		super();
@@ -23,7 +23,7 @@ public class End extends ParentAbsTile implements StdTile,Immovable {
 	public End(int i, int k) {
 		super();
 		this.setLocation(i, k);
-		this.setSymbol(' ');
+		this.setSymbol('e');
 	}
 
 	@Override
