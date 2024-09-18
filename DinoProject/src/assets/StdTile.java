@@ -1,67 +1,60 @@
-/**
- * 
- */
 package assets;
-
-import java.util.Arrays;
-
-/**
- * 
+/*
+ *  This may or may not represnt the null status for the 
+ *  boardgame. At user level this represents the air and
+ *  or blank tiles.
  */
-public class StdTile {
-	protected char symbol; 
-	protected final int[] coord = new int[2];
-	
-	
-	public StdTile(char symbol, int xcoord, int ycoord) {
-		super();
-		this.symbol = symbol;
-		this.coord[0] = xcoord;
-		this.coord[1] = ycoord;
-	}
-	
-	public StdTile(char symbol, int[] coord) {
-		super();
-		this.symbol = symbol;
-		this.coord[0] = coord[0];
-		this.coord[1] = coord[1];
-	}
-	
-	public StdTile(int xcoord, int ycoord) {
-		super();
-		this.symbol = ' ';
-		this.coord[0] = xcoord;
-		this.coord[1] = ycoord;
-	}
-	public StdTile() {
-		super();
-		this.symbol = ' ';
-		this.coord[0] = -1;
-		this.coord[1] = -1;
-	}
-	
-	
-	public char getSymbol() {
-		return symbol;
-	}
-	public void setSymbol(char symbol) {
-		this.symbol = symbol;
-	}
-	public int x(){
-		return this.coord[0];
-	}
-	public int y(){
-		return this.coord[1];
-	}
-	// TODO Draw()
-	public final void draw() {
-		System.out.print(this.symbol);
-	}
 
-	@Override
-	public String toString() {
-		return "StdTile [symbol=" + symbol + ", coord=(" + Arrays.toString(coord) + ")]";
-	}
+import java.util.ArrayList;
+
+/*
+
+~ ~ ~ ~ Static Tiles ~ ~ ~ ~
+	# = Wall
+	  = Air (or StdTile?)
+	* = PressurePlate
+	° = Token/Coin
+	s = Start
+	e = End 
 	
+~ ~ ~ ~ Entity Tiles ~ ~ ~ ~
+	■ = Block
+	& = Player
+	
+~ ~ ~ ~ Basic Tiles ~ ~ ~ ~ 
+	Ø = Static Tile (Ukn/Base)
+	? = Entity Tile (Ukn/Base)
+
+*/
+
+// private ArrayList<StdTile> renderStack = new ArrayList<StdTile>();
+/**
+ * The basis interface for the terminal boardgame.
+ */
+public interface StdTile {
+	
+	public int[] getLocation();
+	/**
+	 * in StdTile form it will simply draw a space.
+	 */
+	public default void draw() {
+		// Hopefully this happens when we do the whole .Draw Stuff.
+		System.out.print(' ');
+	}
+	/**
+	 * This should <i>HOPEFULLY</i> return a null spot if it is simply a StdTile.
+	 * @return
+	 */
+	public default StdTile tileCopy() {
+		return null;
+	}
+	/**
+	 * <i>have ParentAbsTile open to understand this Function </i> <br>
+	 * This function is for rendering each tile. 
+	 * @return
+	 */
+	public default StdTile peek() {
+        return null;
+    }
 	
 }
