@@ -1,15 +1,21 @@
 package assets;
-import java.util.*;
+
+
+import dinoMainPKG.GameBoard;
 
 
 public class TestAssets {
 	
 	public static void main(String[] args) {
-		ArrayList<ArrayList<StdTile>> testBoard= new ArrayList<ArrayList<StdTile>>();
+		GameBoard testBoard = new GameBoard();
 		/*
-		 * {'#',' '},
-		 * {' ','#'}
+		 * {'#','#'},
+		 * {'#','#'}
 		 */
+		
+		testBoard.terminalRender();
+
+		
 		
 	}
 

@@ -6,6 +6,7 @@ package dinoMainPKG;
 import java.util.*;
 
 import assets.StdTile;
+import assets.*;
 /**
  * 
  */
@@ -76,25 +77,28 @@ public class GameBoard {
 		// Initalizing pGameArray
 		int _gameHeight = -1;
 		char[][] _pGameArray = {
-				{'#',' '},
-				{' ','#'}
+				{'#','#','#','?'},
+				{'#','Ø','#'},
+				{'#','■','*','#'},
+				{'#',' ','#','e'},
+				{'#','*',' ',' '},
+				{'#','°',' ',' '},
+				{'#','#','#','#'}		
 		};
 		_gameHeight = _pGameArray.length;
+		
 		for(int i = 0; i < _gameHeight; i++)  {
 			this.pGame.add(new ArrayList<StdTile>());
 		}
 		
-		
-		StdTile _tObjIter = null;
 		for (int i = 0; i < pGame.size(); i++) {
 			for (int k=0; k<_pGameArray[i].length; k++){
-				
 				// ~ ~ ~ Static Tile Initalization ~ ~ ~ //
 				if(_pGameArray[i][k]== '#') {
-										
+					this.pGame.get(i).add(new Wall(i,k));
 				}
 				else if(_pGameArray[i][k]== ' ') {
-					
+					this.pGame.get(i).add(new Air(i,k));
 				}
 				else if(_pGameArray[i][k]== '*') {
 					
@@ -118,10 +122,10 @@ public class GameBoard {
 					
 				}
 				else if(_pGameArray[i][k]== 'Ø') {
-					
+					this.pGame.get(i).add(new Wall(i,k,'Ø'));
 				}
 				else if(_pGameArray[i][k]== '?') {
-					
+					this.pGame.get(i).add(new Air(i,k,'?'));
 				}
 				else {
 					
@@ -161,7 +165,7 @@ public class GameBoard {
 		for(int i = 0; i < pGame.size(); i++) {
 			System.out.println(' ');
 			for (int k = 0; k < pGame.get(i).size(); k++) {
-				
+				this.pGame.get(i).get(k).draw();
 			}
 		}
 	}

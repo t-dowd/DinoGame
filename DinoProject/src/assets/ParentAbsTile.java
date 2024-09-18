@@ -12,20 +12,21 @@ import dinoMainPKG.InteractionResult;
 public abstract class ParentAbsTile {
 	// TODO move render stack managment into its own class
 	
-	private int[] location = new int[2];
+	protected int[] location = new int[2];
 	private ArrayList<StdTile> renderStack;
 	protected char symbol;
 	
 	/**
-	 * 
-	 * @param pFrom The Interactor
+	 * this interact onto that (ponto)
 	 * @param pOnto The Interactee
 	 * @return
 	 */
-	public abstract InteractionResult interact(StdTile pFrom, StdTile pOnto);
-	
-	
-	
+	public abstract InteractionResult interact(StdTile pOnto);
+	// Getters and Setters
+	public abstract int[] getLocation();
+	public abstract void setLocation(int[] location);
+	public abstract char getSymbol();
+	public abstract void setSymbol(char symbol);
 	// ~ ~ ~ Render Stack Stuff ~ ~ ~ //
 	
 	// Push a StdTile object onto the stack
