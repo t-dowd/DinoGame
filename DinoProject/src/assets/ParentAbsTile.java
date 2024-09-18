@@ -16,12 +16,7 @@ public abstract class ParentAbsTile {
 	private ArrayList<StdTile> renderStack;
 	protected char symbol;
 	
-	/**
-	 * this interact onto that (ponto)
-	 * @param pOnto The Interactee
-	 * @return
-	 */
-	public abstract InteractionResult interact(StdTile pOnto);
+	
 	// Getters and Setters
 	public abstract int[] getLocation();
 	public abstract void setLocation(int[] location);

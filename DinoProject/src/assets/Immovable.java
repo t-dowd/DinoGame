@@ -1,16 +1,10 @@
-/**
- * 
- */
 package assets;
-
 import java.util.ArrayList;
 
-import dinoMainPKG.*;
-/**
- * 
- */
+import dinoMainPKG.InteractionResult;
+
 @SuppressWarnings("unused")
-public interface Mobile {
+public interface Immovable {
 	/**
 	 * this interact onto that (ponto)
 	 * @param pOnto The Interactee

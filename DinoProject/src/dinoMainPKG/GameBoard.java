@@ -6,13 +6,15 @@ package dinoMainPKG;
 import java.util.*;
 
 import assets.StdTile;
+import concreteTiles.*;
+
 import assets.*;
 /**
  * 
  */
 
+@SuppressWarnings("unused")
 public class GameBoard {
-	@SuppressWarnings("unused")
 	private static final String fileStorage = "PlaceHolderFileName";
 	private ArrayList<ArrayList<StdTile>> pGame= new ArrayList<ArrayList<StdTile>>();
 	
@@ -77,13 +79,14 @@ public class GameBoard {
 		// Initalizing pGameArray
 		int _gameHeight = -1;
 		char[][] _pGameArray = {
-				{'#','#','#','?'},
-				{'#','Ø','#'},
-				{'#','■','*','#'},
-				{'#',' ','#','e'},
-				{'#','*',' ',' '},
-				{'#','°',' ',' '},
-				{'#','#','#','#'}		
+				{'#','#','#','#','#'},
+				{'#',' ',' ',' ','#'},
+				{'#',' ',' ',' ','#'},
+				{'#',' ',' ',' ','#'},
+				{'#',' ',' ',' ','#'},
+				{'#',' ',' ',' ','#'},
+				{'#',' ',' ',' ','#'},
+				{'#','#','#','#','#'},
 		};
 		_gameHeight = _pGameArray.length;
 		
@@ -101,25 +104,25 @@ public class GameBoard {
 					this.pGame.get(i).add(new Air(i,k));
 				}
 				else if(_pGameArray[i][k]== '*') {
-					
+					this.pGame.get(i).add(new PressurePlate(i,k));
 				}
 				else if(_pGameArray[i][k]== '°') {
-					
+					this.pGame.get(i).add(new Token(i,k));
 				}
 				else if(_pGameArray[i][k]== 's') {
-					
+					this.pGame.get(i).add(new Start(i,k));
 				}	
 				else if(_pGameArray[i][k]== 'e') {
-					
+					this.pGame.get(i).add(new End(i,k));
 				}
 				
 				
 				// ~ ~ ~ Entity Tile Initalization ~ ~ ~ //
 				else if(_pGameArray[i][k]== '&'){
-					
+					this.pGame.get(i).add(new Air(i,k,'?'));
 				}
 				else if(_pGameArray[i][k]== '■'){
-					
+					this.pGame.get(i).add(new Air(i,k,'?'));
 				}
 				else if(_pGameArray[i][k]== 'Ø') {
 					this.pGame.get(i).add(new Wall(i,k,'Ø'));
@@ -204,7 +207,6 @@ public class GameBoard {
 	
 	
 	
-	@SuppressWarnings("unused")
 	private static char[][] _loadArrayFile(int numLevel){
 		// TODO Implement File Loading
 		

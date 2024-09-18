@@ -1,32 +1,37 @@
-package assets;
-
-
+package concreteTiles;
 
 import java.util.Arrays;
 
+import assets.Immovable;
+import assets.ParentAbsTile;
+import assets.StdTile;
 import dinoMainPKG.InteractionResult;
 
-public class Wall extends ParentAbsTile implements StdTile {
+public class Token extends ParentAbsTile implements Immovable, StdTile {
 
-	
-	
-	public Wall() {
+	public Token() {
 		super();
 		this.setLocation(-1, -1);
-		this.setSymbol('#');
+		this.setSymbol('°');
 	}
-	
-	public Wall(int i, int k, Character pChar) {
+	public Token(int i, int k, Character pChar) {
 		super();
 		this.setLocation(i, k);
 		this.setSymbol(pChar);
 	}
 	
-	public Wall(int i, int k) {
+	public Token(int i, int k) {
 		super();
 		this.setLocation(i, k);
-		this.setSymbol('#');
+		this.setSymbol('°');
 	}
+	
+	@Override
+	public InteractionResult interact(StdTile pOnto) {
+		//TODO manage Render methods
+		return InteractionResult.CollisionDisAllowed;
+	}
+	
 	@Override
 	public String toString() {
 		return "("+ Arrays.toString(location) + ", s=" + symbol + ")";
@@ -41,16 +46,6 @@ public class Wall extends ParentAbsTile implements StdTile {
 		return this;
 	}
 	
-	@Override
-	public InteractionResult interact(StdTile pOnto) {
-		return InteractionResult.CollisionDisAllowed;
-	}
-
-	@Override
-	public int[] getLocation() {
-		return null;
-	}
-
 	@Override
 	public void setLocation(int[] pLocation) {
 		this.location = pLocation;
@@ -69,7 +64,8 @@ public class Wall extends ParentAbsTile implements StdTile {
 		this.symbol = pSymbol;
 		
 	}
-	
-	
-	
+	@Override
+	public int[] getLocation() {
+		return this.location;
+	}
 }

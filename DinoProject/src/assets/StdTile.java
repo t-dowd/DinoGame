@@ -7,6 +7,7 @@ package assets;
 
 import java.util.ArrayList;
 
+
 /*
 
 ~ ~ ~ ~ Static Tiles ~ ~ ~ ~
