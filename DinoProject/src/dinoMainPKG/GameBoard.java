@@ -16,7 +16,7 @@ import assets.*;
 @SuppressWarnings("unused")
 public class GameBoard {
 	private static final String fileStorage = "PlaceHolderFileName";
-	private ArrayList<ArrayList<StdTile>> pGame= new ArrayList<ArrayList<StdTile>>();
+	public ArrayList<ArrayList<StdTile>> pGame= new ArrayList<ArrayList<StdTile>>();
 	
 	/**
 	 * The parameterized constructor for when there is <br>
@@ -73,7 +73,65 @@ public class GameBoard {
 		//End Outer For
 	}
 	
+	public GameBoard(char[][] InStuf) {
+		super();
+		// Initalizing pGameArray
+		int _gameHeight = -1;
+		char[][] _pGameArray = InStuf;
+		_gameHeight = _pGameArray.length;
+		
+		for(int i = 0; i < _gameHeight; i++)  {
+			this.pGame.add(new ArrayList<StdTile>());
+		}
+		
+		for (int i = 0; i < pGame.size(); i++) {
+			for (int k=0; k<_pGameArray[i].length; k++){
+				// ~ ~ ~ Static Tile Initalization ~ ~ ~ //
+				if(_pGameArray[i][k]== '#') {
+					this.pGame.get(i).add(new Wall(i,k));
+				}
+				else if(_pGameArray[i][k]== ' ') {
+					this.pGame.get(i).add(new Air(i,k));
+				}
+				else if(_pGameArray[i][k]== '*') {
+					this.pGame.get(i).add(new PressurePlate(i,k));
+				}
+				else if(_pGameArray[i][k]== '°') {
+					this.pGame.get(i).add(new Token(i,k));
+				}
+				else if(_pGameArray[i][k]== 's') {
+					this.pGame.get(i).add(new Start(i,k));
+				}	
+				else if(_pGameArray[i][k]== 'e') {
+					this.pGame.get(i).add(new End(i,k));
+				}
+				
+				
+				// ~ ~ ~ Entity Tile Initalization ~ ~ ~ //
+				else if(_pGameArray[i][k]== '&'){
+					this.pGame.get(i).add(new Air(i,k,'?'));
+				}
+				else if(_pGameArray[i][k]== '■'){
+					this.pGame.get(i).add(new Air(i,k,'?'));
+				}
+				else if(_pGameArray[i][k]== 'Ø') {
+					this.pGame.get(i).add(new Wall(i,k,'Ø'));
+				}
+				else if(_pGameArray[i][k]== '?') {
+					this.pGame.get(i).add(new Air(i,k,'?'));
+				}
+				else {
+					
+				}
+			}
+		}
+		//End Outer For
+	}
 	
+	
+	/**
+	 * Used for Hand implementing levels
+	 */
 	public GameBoard() {
 		super();
 		// Initalizing pGameArray
@@ -81,7 +139,7 @@ public class GameBoard {
 		char[][] _pGameArray = {
 				{'#','#','#','#','#'},
 				{'#',' ',' ',' ','#'},
-				{'#',' ',' ',' ','#'},
+				{'#','&',' ',' ','#'},
 				{'#',' ',' ',' ','#'},
 				{'#',' ',' ',' ','#'},
 				{'#',' ',' ',' ','#'},
@@ -160,6 +218,63 @@ public class GameBoard {
 		
 		
 		this.pGame = paramBoard;
+	}
+	
+	
+	public void updateGameBoard(char[][] InStuf) {
+		// We WANT pass by Value to discard this.pGame's data // 
+		int _gameHeight = -1;
+		char[][] _pGameArray = InStuf;
+		_gameHeight = _pGameArray.length;
+		
+		for(int i = 0; i < _gameHeight; i++)  {
+			this.pGame.add(new ArrayList<StdTile>());
+		}
+		
+		for (int i = 0; i < pGame.size(); i++) {
+			for (int k=0; k<_pGameArray[i].length; k++){
+				// ~ ~ ~ Static Tile Initalization ~ ~ ~ //
+				if(_pGameArray[i][k]== '#') {
+					this.pGame.get(i).add(new Wall(i,k));
+				}
+				else if(_pGameArray[i][k]== ' ') {
+					this.pGame.get(i).add(new Air(i,k));
+				}
+				else if(_pGameArray[i][k]== '*') {
+					this.pGame.get(i).add(new PressurePlate(i,k));
+				}
+				else if(_pGameArray[i][k]== '°') {
+					this.pGame.get(i).add(new Token(i,k));
+				}
+				else if(_pGameArray[i][k]== 's') {
+					this.pGame.get(i).add(new Start(i,k));
+				}	
+				else if(_pGameArray[i][k]== 'e') {
+					this.pGame.get(i).add(new End(i,k));
+				}
+				
+				
+				// ~ ~ ~ Entity Tile Initalization ~ ~ ~ //
+				else if(_pGameArray[i][k]== '&'){
+					this.pGame.get(i).add(new Air(i,k,'?'));
+				}
+				else if(_pGameArray[i][k]== '■'){
+					this.pGame.get(i).add(new Air(i,k,'?'));
+				}
+				else if(_pGameArray[i][k]== 'Ø') {
+					this.pGame.get(i).add(new Wall(i,k,'Ø'));
+				}
+				else if(_pGameArray[i][k]== '?') {
+					this.pGame.get(i).add(new Air(i,k,'?'));
+				}
+				else {
+					
+				}
+			}
+		}
+		//End Outer For
+		
+		
 	}
 	
 	
